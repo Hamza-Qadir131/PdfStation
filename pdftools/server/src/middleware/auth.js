@@ -31,4 +31,14 @@ function optionalAuth(req, _res, next) {
   next();
 }
 
-module.exports = { requireAuth, optionalAuth };
+// Must be used after requireAuth. Only lets the configured admin email through.
+function requireAdmin(req, res, next) {
+  const adminEmail = (process.env.ADMIN_EMAIL || "").toLowerCase().trim();
+  const userEmail = (req.user?.email || "").toLowerCase().trim();
+  if (!adminEmail || userEmail !== adminEmail) {
+    return res.status(403).json({ error: "Not authorized." });
+  }
+  next();
+}
+
+module.exports = { requireAuth, optionalAuth, requireAdmin };

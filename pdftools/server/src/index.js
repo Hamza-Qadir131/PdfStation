@@ -7,6 +7,7 @@ const { cleanupExpired } = require("./utils/storage");
 const authRoutes = require("./routes/auth");
 const toolsRoutes = require("./routes/tools");
 const filesRoutes = require("./routes/files");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -20,6 +21,7 @@ app.get("/api/health", (_req, res) => res.json({ ok: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/tools", toolsRoutes);
 app.use("/api/files", filesRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Generic error handler (e.g. multer file-too-large errors land here)
 app.use((err, _req, res, _next) => {
