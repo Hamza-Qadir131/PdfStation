@@ -1,6 +1,6 @@
 (function () {
   if (!Auth.isLoggedIn()) {
-    window.location.href = "/login?next=" + encodeURIComponent("/dashboard");
+    window.location.href = "/login?next=" + encodeURIComponent("/history");
     return;
   }
 

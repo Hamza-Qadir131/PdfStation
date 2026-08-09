@@ -768,7 +768,7 @@ footer {
   right: -4px;
   bottom: 6px;
   height: 12px;
-  background: linear-gradient(90deg, rgba(255, 181, 69, 0.5), rgba(53, 230, 216, 0.4));
+  background: linear-gradient(90deg, rgba(107, 7, 7, 0.5), rgba(53, 230, 216, 0.4));
   z-index: -1;
   border-radius: 2px;
   filter: blur(1px);

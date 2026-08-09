@@ -16,17 +16,58 @@
   </div>
 </header>
 
-<div class="shell">
+<div class="shell" id="tools">
   <div class="dash-header">
-    <h1>Your files</h1>
-    <a class="btn btn-primary" href="/index#tools">New task</a>
+    <h1>Your tools</h1>
+    <a class="btn btn-ghost" href="/history">View history</a>
   </div>
-  <div id="jobs-slot"></div>
+
+  <div class="bento-grid">
+    <a class="tool-card tool-card--featured" href="/tool?tool=merge">
+      <span class="icon">🗂️</span>
+      <h3>Merge PDFs</h3>
+      <p>Combine several PDFs into one, in exactly the order you choose. The most-used tool — start here.</p>
+      <span class="card-cta">Try it →</span>
+    </a>
+
+    <a class="tool-card" href="/tool?tool=split">
+      <span class="icon">✂️</span>
+      <h3>Split a PDF</h3>
+      <p>Pull out exactly the pages you need.</p>
+    </a>
+
+    <a class="tool-card" href="/tool?tool=rotate">
+      <span class="icon">🔄</span>
+      <h3>Rotate a PDF</h3>
+      <p>Fix sideways or upside-down pages.</p>
+    </a>
+
+    <a class="tool-card" href="/tool?tool=compress">
+      <span class="icon">🗜️</span>
+      <h3>Compress a PDF</h3>
+      <p>Shrink file size for easier sharing.</p>
+    </a>
+
+    <a class="tool-card" href="/tool?tool=images-to-pdf">
+      <span class="icon">🖼️</span>
+      <h3>Images to PDF</h3>
+      <p>Turn JPGs or PNGs into a single PDF.</p>
+    </a>
+
+    <a class="tool-card" href="/tool?tool=pdf-to-images">
+      <span class="icon">📤</span>
+      <h3>PDF to Images</h3>
+      <p>Export each page as a PNG image.</p>
+    </a>
+  </div>
 </div>
+
+<footer>
+  <div class="shell">PDFStation — files are automatically deleted 24 hours after processing.</div>
+</footer>
 
 <script src="/js/config.js"></script>
 <script src="/js/effects.js"></script>
 <script src="/js/api.js"></script>
-<script src="/js/dashboard.js"></script>
 </body>
 </html>
