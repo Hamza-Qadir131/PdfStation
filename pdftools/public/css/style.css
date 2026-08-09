@@ -760,9 +760,11 @@ footer {
 
 .hero h1 .hl {
   position: relative;
-  -webkit-text-fill-color: initial;
-  background: none;
   color: var(--paper);
+  -webkit-text-fill-color: var(--paper);
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
 }
 .hero h1 .hl::after {
   content: "";
