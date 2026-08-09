@@ -53,18 +53,18 @@ function renderNav() {
   const user = Auth.getUser();
   if (user) {
     slot.innerHTML = `
-      <a href="/dashboard.html">Dashboard</a>
+      <a href="/dashboard">Dashboard</a>
       <span style="color:var(--paper-dim); font-family: var(--font-mono); font-size:13px;">${escapeHtml(user.email)}</span>
       <button class="btn btn-ghost" id="logout-btn">Log out</button>
     `;
     document.getElementById("logout-btn").addEventListener("click", () => {
       Auth.clearSession();
-      window.location.href = "/index.html";
+      window.location.href = "/index";
     });
   } else {
     slot.innerHTML = `
-      <a href="/login.html">Log in</a>
-      <a class="btn btn-primary" href="/register.html">Sign up free</a>
+      <a href="/login">Log in</a>
+      <a class="btn btn-primary" href="/register">Sign up free</a>
     `;
   }
 }

@@ -95,6 +95,15 @@ header.topbar {
   text-decoration: none;
 }
 
+.brand .brand-text {
+  background: linear-gradient(100deg, var(--amber) 0%, var(--teal) 35%, var(--neon-purple) 60%, var(--amber) 100%);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmerText 5s linear infinite;
+}
+
 .brand .stamp {
   width: 30px;
   height: 30px;
@@ -731,4 +740,204 @@ footer {
   .hero::before, .hero::after, .hero h1, .hero .eyebrow::before, .section-label::after {
     animation: none !important;
   }
+}
+
+/* ==========================================================
+   HOMEPAGE REDESIGN — split hero, trust strip, bento tool grid
+   ========================================================== */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+}
+
+.hero h1 .hl {
+  position: relative;
+  -webkit-text-fill-color: initial;
+  background: none;
+  color: var(--paper);
+}
+.hero h1 .hl::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 6px;
+  height: 12px;
+  background: linear-gradient(90deg, rgba(255, 181, 69, 0.5), rgba(53, 230, 216, 0.4));
+  z-index: -1;
+  border-radius: 2px;
+  filter: blur(1px);
+}
+
+/* ---------- Trust pill strip ---------- */
+
+.trust-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.trust-pill {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--paper-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 7px 13px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ---------- Hero visual: floating stacked pages ---------- */
+
+.hero-visual {
+  position: relative;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stack-card {
+  position: absolute;
+  width: 230px;
+  height: 290px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 181, 69, 0.25);
+}
+
+.stack-3 {
+  background: linear-gradient(160deg, rgba(181, 101, 255, 0.12), rgba(181, 101, 255, 0.03));
+  transform: rotate(14deg) translate(30px, 10px);
+  animation: floatSlow 7s ease-in-out infinite;
+}
+
+.stack-2 {
+  background: linear-gradient(160deg, rgba(53, 230, 216, 0.14), rgba(53, 230, 216, 0.03));
+  transform: rotate(-9deg) translate(-25px, 6px);
+  animation: floatSlow 8s ease-in-out infinite reverse;
+}
+
+.stack-1 {
+  background: linear-gradient(160deg, rgba(16, 16, 20, 0.9), rgba(16, 16, 20, 0.7));
+  backdrop-filter: blur(10px);
+  box-shadow: 0 30px 70px -20px rgba(0, 0, 0, 0.9), 0 0 50px -10px rgba(255, 181, 69, 0.35);
+  padding: 26px 22px;
+  animation: floatSlow 6s ease-in-out infinite;
+  animation-delay: 0.3s;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50% { transform: translateY(-14px) rotate(var(--r, 0deg)); }
+}
+.stack-3 { --r: 14deg; }
+.stack-2 { --r: -9deg; }
+
+.stack-icon {
+  font-size: 34px;
+  filter: drop-shadow(0 0 12px rgba(255, 181, 69, 0.6));
+}
+
+.stack-line {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-top: 16px;
+}
+.stack-line.short { width: 60%; }
+
+.orbit-badge {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  backdrop-filter: blur(8px);
+  animation: floatSlow 5s ease-in-out infinite;
+}
+.badge-a {
+  top: 18px;
+  right: 10px;
+  background: rgba(255, 181, 69, 0.15);
+  border: 1px solid rgba(255, 181, 69, 0.4);
+  color: var(--amber-soft);
+  animation-delay: 0.6s;
+}
+.badge-b {
+  bottom: 30px;
+  left: 0;
+  background: rgba(53, 230, 216, 0.15);
+  border: 1px solid rgba(53, 230, 216, 0.4);
+  color: var(--teal);
+  animation-delay: 1s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stack-3, .stack-2, .stack-1, .orbit-badge { animation: none !important; }
+}
+
+/* ---------- Bento tool grid ---------- */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: minmax(190px, auto);
+  gap: 16px;
+  padding-bottom: 80px;
+  perspective: 1000px;
+}
+
+.tool-card--featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  border-color: rgba(255, 181, 69, 0.3);
+  background:
+    linear-gradient(160deg, rgba(255, 181, 69, 0.08), rgba(53, 230, 216, 0.03)),
+    var(--ink-card);
+}
+
+.tool-card--featured .icon {
+  font-size: 46px;
+  margin-bottom: 22px;
+}
+
+.tool-card--featured h3 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.tool-card--featured p {
+  font-size: 15px;
+  max-width: 320px;
+}
+
+.card-cta {
+  margin-top: auto;
+  padding-top: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--amber);
+}
+
+@media (max-width: 720px) {
+  .bento-grid { grid-template-columns: 1fr 1fr; }
+  .tool-card--featured { grid-column: span 2; grid-row: span 1; }
+}
+@media (max-width: 480px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .tool-card--featured { grid-column: span 1; }
 }

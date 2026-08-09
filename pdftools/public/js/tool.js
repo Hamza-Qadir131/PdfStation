@@ -6,7 +6,7 @@
   const root = document.getElementById("workspace-root");
 
   if (!config) {
-    root.innerHTML = `<p class="status-msg error">Unknown tool. <a href="/index.html">Back to home</a>.</p>`;
+    root.innerHTML = `<p class="status-msg error">Unknown tool. <a href="/index">Back to home</a>.</p>`;
     return;
   }
 
@@ -121,7 +121,7 @@
   // ---- submit ----
   submitBtn.addEventListener("click", async () => {
     if (!Auth.isLoggedIn()) {
-      window.location.href = `/login.html?next=${encodeURIComponent(window.location.href)}`;
+      window.location.href = `/login?next=${encodeURIComponent(window.location.href)}`;
       return;
     }
 

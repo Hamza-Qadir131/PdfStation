@@ -17,7 +17,7 @@
           },
         });
         Auth.setSession(data.token, data.user);
-        window.location.href = next || "/dashboard.html";
+        window.location.href = next || "/dashboard";
       } catch (err) {
         errorMsg.textContent = err.message;
       }
@@ -40,7 +40,7 @@
           },
         });
         Auth.setSession(data.token, data.user);
-        window.location.href = next || "/dashboard.html";
+        window.location.href = next || "/dashboard";
       } catch (err) {
         errorMsg.textContent = err.message;
       }
