@@ -768,7 +768,7 @@ footer {
   right: -4px;
   bottom: 6px;
   height: 12px;
-  background: linear-gradient(90deg, rgba(107, 7, 7, 0.5), rgba(53, 230, 216, 0.4));
+  background: linear-gradient(90deg, rgba(255, 181, 69, 0.5), rgba(53, 230, 216, 0.4));
   z-index: -1;
   border-radius: 2px;
   filter: blur(1px);
@@ -937,4 +937,26 @@ footer {
 @media (max-width: 480px) {
   .bento-grid { grid-template-columns: 1fr; }
   .tool-card--featured { grid-column: span 1; }
+}
+
+/* ---------- Active nav tab highlight ---------- */
+
+nav.topnav a.nav-active {
+  color: var(--amber);
+  position: relative;
+  font-weight: 600;
+}
+nav.topnav a.nav-active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--amber), var(--teal));
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 181, 69, 0.6);
+}
+nav.topnav {
+  position: relative;
 }

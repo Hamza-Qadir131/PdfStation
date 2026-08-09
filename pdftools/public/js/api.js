@@ -51,10 +51,12 @@ function renderNav() {
   const slot = document.getElementById("nav-auth-slot");
   if (!slot) return;
   const user = Auth.getUser();
+  const path = window.location.pathname;
   if (user) {
     slot.innerHTML = `
-      <a href="/dashboard">Dashboard</a>
-      <a href="/history">History</a>
+      <a href="/dashboard" class="${path === "/dashboard" ? "nav-active" : ""}">Dashboard</a>
+      <a href="/history" class="${path === "/history" ? "nav-active" : ""}">History</a>
+      <a href="/admin" class="${path === "/admin" ? "nav-active" : ""}">Admin</a>
       <span style="color:var(--paper-dim); font-family: var(--font-mono); font-size:13px;">${escapeHtml(user.email)}</span>
       <button class="btn btn-ghost" id="logout-btn">Log out</button>
     `;
